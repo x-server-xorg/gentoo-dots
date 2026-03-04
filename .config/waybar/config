@@ -1,0 +1,66 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": ["clock", "custom/weather"],
+    "modules-right": ["tray", "  ", "network", "pulseaudio", "memory", "cpu"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "clock": {
+        "format": "{:%a, %d. %b  %H:%M}",
+        "tooltip": false,
+     },
+
+"tray": {
+    "interval": 30,
+    "icon-size": 22,
+    "spacing": 30
+},
+
+
+
+"network": {
+    "interval": 30,
+    "format-wifi": " {ifname}",
+    "format-ethernet": "   {ifname}",
+    "format-disconnected": "⚠ Disconnected",
+    "on-click": "nm-connection-editor", // Opens GUI editor
+    "on-click-right": "kitty nmtui",   // Opens TUI in terminal (replace kitty with your terminal)
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-disconnected": "Disconnected",
+    
+},
+
+    "memory": {
+        "interval": 30,
+        "format": "{used:0.1f}G/{total:0.1f}G "
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{}% ",
+        "max-length": 10
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "custom/weather": {
+        "tooltip": false,
+        "exec": "curl 'https://wttr.in/Warsaw?format=1'",
+        "interval": 800
+    }
+
+}
